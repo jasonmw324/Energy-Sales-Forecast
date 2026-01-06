@@ -57,14 +57,18 @@ def load_data():
 energy_data = load_data()
 
 # ----------------------------
-# Scale and fit SARIMAX Models
+# Train/Test Split and Fit Models
 # ----------------------------
 @st.cache_resource
 def fit_models(data):
-    # Model 1 - Conservative
+    # Split data: train up to 2022, test from 2023 onwards
+    train_data = data[data['year'] <= 2022][['sales']].copy()
+    test_data = data[data['year'] > 2022][['sales']].copy()
+    
+    # Model 1 - Conservative (train on training data only)
     scaler_1 = StandardScaler()
-    sales_scaled_array_1 = scaler_1.fit_transform(data[['sales']])
-    sales_scaled_1 = pd.Series(sales_scaled_array_1.flatten(), index=data.index, name='sales')
+    sales_scaled_array_1 = scaler_1.fit_transform(train_data[['sales']])
+    sales_scaled_1 = pd.Series(sales_scaled_array_1.flatten(), index=train_data.index, name='sales')
     
     model_1 = SARIMAX(
         sales_scaled_1,
@@ -74,10 +78,10 @@ def fit_models(data):
         enforce_invertibility=False
     ).fit(disp=False)
     
-    # Model 2 - Growth
+    # Model 2 - Growth (train on training data only)
     scaler_2 = StandardScaler()
-    sales_scaled_array_2 = scaler_2.fit_transform(data[['sales']])
-    sales_scaled_2 = pd.Series(sales_scaled_array_2.flatten(), index=data.index, name='sales')
+    sales_scaled_array_2 = scaler_2.fit_transform(train_data[['sales']])
+    sales_scaled_2 = pd.Series(sales_scaled_array_2.flatten(), index=train_data.index, name='sales')
     
     model_2 = SARIMAX(
         sales_scaled_2,
@@ -87,9 +91,9 @@ def fit_models(data):
         enforce_invertibility=False
     ).fit(disp=False)
     
-    return model_1, scaler_1, model_2, scaler_2
+    return model_1, scaler_1, model_2, scaler_2, train_data, test_data
 
-model_1, scaler_1, model_2, scaler_2 = fit_models(energy_data)
+model_1, scaler_1, model_2, scaler_2, train_data, test_data = fit_models(energy_data)
 
 # ----------------------------
 # Header
@@ -125,7 +129,22 @@ Both models analyze historical patterns to predict future electricity demand. Us
 """)
 
 # ----------------------------
-# Generate Forecasts
+# Calculate Test Set Accuracy
+# ----------------------------
+# Get test predictions for Model 1
+test_pred_scaled_1 = model_1.get_forecast(steps=len(test_data)).predicted_mean
+test_pred_1_unscaled = scaler_1.inverse_transform(test_pred_scaled_1.values.reshape(-1, 1)).flatten()
+mape_1 = np.mean(np.abs((test_data['sales'].values - test_pred_1_unscaled) / test_data['sales'].values)) * 100
+accuracy_1 = 100 - mape_1
+
+# Get test predictions for Model 2
+test_pred_scaled_2 = model_2.get_forecast(steps=len(test_data)).predicted_mean
+test_pred_2_unscaled = scaler_2.inverse_transform(test_pred_scaled_2.values.reshape(-1, 1)).flatten()
+mape_2 = np.mean(np.abs((test_data['sales'].values - test_pred_2_unscaled) / test_data['sales'].values)) * 100
+accuracy_2 = 100 - mape_2
+
+# ----------------------------
+# Generate Future Forecasts (beyond test set)
 # ----------------------------
 # Model 1 forecast
 future_pred_scaled_1 = model_1.get_forecast(steps=n_future).predicted_mean
@@ -148,17 +167,6 @@ forecast_avg_1 = future_pred_1.mean()
 forecast_avg_2 = future_pred_2.mean()
 pct_change_1 = ((forecast_avg_1 - current_sales) / current_sales) * 100
 pct_change_2 = ((forecast_avg_2 - current_sales) / current_sales) * 100
-
-# Calculate historical accuracy (1 - MAPE)
-fitted_1 = model_1.fittedvalues
-fitted_1_unscaled = scaler_1.inverse_transform(fitted_1.values.reshape(-1, 1)).flatten()
-mape_1 = np.mean(np.abs((energy_data['sales'].values - fitted_1_unscaled) / energy_data['sales'].values)) * 100
-accuracy_1 = 100 - mape_1
-
-fitted_2 = model_2.fittedvalues
-fitted_2_unscaled = scaler_2.inverse_transform(fitted_2.values.reshape(-1, 1)).flatten()
-mape_2 = np.mean(np.abs((energy_data['sales'].values - fitted_2_unscaled) / energy_data['sales'].values)) * 100
-accuracy_2 = 100 - mape_2
 
 # ----------------------------
 # KPI Metrics
@@ -307,9 +315,9 @@ with tab2:
         
         # Model accuracy metric
         st.metric(
-            "Historical Accuracy",
+            "Test Set Accuracy",
             f"{accuracy_1:.1f}%",
-            help="Average accuracy on past data - higher is better"
+            help="Accuracy on held-out 2023+ data (100 - MAPE)"
         )
         
         forecast_df_1 = pd.DataFrame({
@@ -407,9 +415,9 @@ with tab3:
         
         # Model accuracy metric
         st.metric(
-            "Historical Accuracy",
+            "Test Set Accuracy",
             f"{accuracy_2:.1f}%",
-            help="Average accuracy on past data - higher is better"
+            help="Accuracy on held-out 2023+ data (100 - MAPE)"
         )
         
         forecast_df_2 = pd.DataFrame({
@@ -461,6 +469,6 @@ with tab3:
 st.markdown("---")
 st.markdown("""
 **Data Source:** U.S. Energy Information Administration (EIA)  
-**Models:** Two SARIMA configurations trained on full historical dataset (2010-2025)  
+**Models:** Two SARIMA configurations trained on data through 2022, validated on 2023+ data  
 **Note:** Forecasts are statistical projections and should be interpreted with appropriate uncertainty bounds.
 """)
