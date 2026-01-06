@@ -7,9 +7,7 @@ Energy sales remained relatively stable from 2010-2019, fluctuating around a mod
 - **Growth Model**: Assumes the recent upward trend continues, helping plan for higher demand scenarios (95.4% accuracy)
 - **Conservative Model**: Assumes reversion to the historical stable pattern, supporting cautious resource planning (97.2% accuracy)
 
-Both models capture seasonal patterns effectively, with residual analysis confirming well-fitted forecasts. This dual-scenario approach enables decision-makers to evaluate risk and plan for multiple possible futures.
-
-*Accuracy calculated as 100 - MAPE, meaning forecasts of the growth and conservative models are within 4.6% and 2.8% of actual values on average respectively.
+Both models capture seasonal patterns effectively, with residual analysis confirming well-fitted forecasts. This dual-scenario approach enables decision-makers to evaluate risk and plan for multiple possible futures. Accuracy calculated as 100 - MAPE, meaning forecasts of the growth and conservative models are within 4.6% and 2.8% of actual values on average respectively.
 
 > 📊 **View the full analysis:** [Python notebook](Energy_Sales_Forecast.ipynb)
 
@@ -93,6 +91,7 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 **For Risk Management:**
 - The divergence between models quantifies uncertainty in planning assumptions
 - Monitor actual sales quarterly against both forecasts
+
 
 
 
