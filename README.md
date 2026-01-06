@@ -80,17 +80,10 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 
 ---
 
-## Business Applications & Recommendations
+## Recommendations
 
-[Section to add - suggestions:]
 
-**For Capacity Planning:**
-- Use the growth model when evaluating infrastructure investments and long-term resource commitments
-- Conservative model provides a lower bound for must-meet demand scenarios
 
-**For Risk Management:**
-- The divergence between models quantifies uncertainty in planning assumptions
-- Monitor actual sales quarterly against both forecasts
 
 
 
