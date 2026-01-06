@@ -4,7 +4,7 @@
 This project analyzes historical energy sales data (in megawatt-hours) from the **U.S. Energy Information Administration (EIA)** to forecast future energy demand. Accurate energy demand forecasting supports better planning, grid management, and resource allocation. By modeling trends and seasonality in historical consumption, this project demonstrates practical applications of time series analysis for energy markets.
 
 ## Objective
-The primary objective of this project is to analyze historical energy sales and forecast future demand using **SARIMA (Seasonal ARIMA)** modeling. Specifically, the project focuses on:  
+The primary objective of this project is to analyze historical energy sales and forecast future demand. Specifically, the project focuses on:  
 - Identifying trends and seasonal patterns in historical energy sales  
 - Building a forecasting model with reliable predictive performance
 
@@ -28,7 +28,6 @@ The analysis leveraged **SARIMA modeling** to capture both trend and seasonal pa
 - **Final Model Selection:**  
  Based on the results of the exploratory data analysis (EDA) and the insights gained from applying the Auto ARIMA function, two SARIMA models were developed to capture different forecasting scenarios:
  
-
   **Model 1 – Conservative:**  
   - Prioritizes steady trends in the data  
   - Produces cautious forecasts, minimizing overestimation of future growth  
@@ -39,7 +38,7 @@ The analysis leveraged **SARIMA modeling** to capture both trend and seasonal pa
 
 - **Validation:** Residual analysis and forecast accuracy metrics (MAE, RMSE) were used to ensure reliability.  
 
-![Forecast vs Actual](forecast_plot.png)  
+## Executive Summary
 
 ## Results
 
@@ -58,5 +57,6 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 - Incorporate additional features such as **weather, holidays, and economic indicators** to improve forecasts  
 - Explore **multivariate time series models** for region-specific energy predictions  
 - Deploy the Streamlit dashboard online for interactive, real-time energy sales forecasting  
+
 
 
