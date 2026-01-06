@@ -40,9 +40,12 @@ The dataset contains historical energy sales (in MWh) from the EIA, with the fol
 ![Forecast Plot](historical_trend.png)
 
 ### Model Performance
-Both SARIMA models achieved 97.5% accuracy (100 - MAPE), with residual analysis confirming minimal autocorrelation and well-fitted forecasts.
+On the test set, the growth and conservative models achieved MAPEs of 4.6% and 2.8%, respectively.
+![Forecast Plot](conservative_test.png)
 
-[Add: Visual comparison of model forecasts vs actuals, residual plots if available]
+![Forecast Plot](growth_test.png)
+
+
 
 ---
 
@@ -74,6 +77,7 @@ Based on the results of the exploratory data analysis (EDA) and the insights gai
 - **Risk Management and Scenario Planning**: Decision-makers should consider using both models jointly to define a realistic planning range. The conservative model can serve as a lower bound and the growth model can serve as an upper boundThe conservative Planning within this range allows for better risk management by preparing for higher-demand outcomes without fully committing resources based on optimistic assumptions alone.
 
 - **Ongoing Monitoring**: Regularly updating and evaluating forecast performance is recommended, particularly as new data become available. If sustained growth continues to be observed, greater reliance on the growth model may be warranted over time. Conversely, if demand stabilizes or declines, the conservative model should be prioritized.
+
 
 
 
