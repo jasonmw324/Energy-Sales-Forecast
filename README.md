@@ -8,8 +8,8 @@ Energy sales remained relatively stable from 2010-2019, fluctuating around a mod
 
 To address this uncertainty, two forecasting scenarios were developed:
 
-- **Growth Model**: Assumes the recent upward trend continues, helping plan for higher demand scenarios (97.5% accuracy*)
-- **Conservative Model**: Assumes reversion to the historical stable pattern, supporting cautious resource planning (97.5% accuracy*)
+- **Growth Model**: Assumes the recent upward trend continues, helping plan for higher demand scenarios (97.5% accuracy)
+- **Conservative Model**: Assumes reversion to the historical stable pattern, supporting cautious resource planning (97.5% accuracy)
 
 Both models capture seasonal patterns effectively, with residual analysis confirming well-fitted forecasts. This dual-scenario approach enables decision-makers to evaluate risk and plan for multiple possible futures.
 
@@ -94,6 +94,7 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 **For Risk Management:**
 - The divergence between models quantifies uncertainty in planning assumptions
 - Monitor actual sales quarterly against both forecasts
+
 
 
 
