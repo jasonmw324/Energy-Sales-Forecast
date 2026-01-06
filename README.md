@@ -15,8 +15,8 @@ The primary objective of this project is to analyze historical energy sales and 
 The dataset contains historical energy sales (in MWh) from the EIA, with the following key variables:  
 
 - **date** – timestamp of the observation  
-- **energy_sales_mwh** – total energy sold (megawatt-hours)  
-- **other variables** – may include regional identifiers, fuel type, or sector depending on data granularity  
+- **sales** – total energy sold (megawatt-hours)  
+
 
 ## Methods
 
@@ -60,3 +60,4 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 - Incorporate additional features such as **weather, holidays, and economic indicators** to improve forecasts  
 - Explore **multivariate time series models** for region-specific energy predictions  
 - Deploy the Streamlit dashboard online for interactive, real-time energy sales forecasting  
+
