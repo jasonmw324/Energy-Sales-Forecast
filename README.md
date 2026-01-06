@@ -25,11 +25,9 @@ The analysis leveraged **SARIMA modeling** to capture both trend and seasonal pa
 - **Exploratory Data Analysis (EDA):**  
   Visualized historical energy sales to detect seasonality, trend components, and anomalies. Decomposition helped determine SARIMA parameters.  
 
-- **Alternative Approaches Considered:**  
-  Simple ARIMA models were tested but underperformed due to strong seasonal effects. Holt-Winters exponential smoothing was also explored but did not capture finer seasonal cycles as well as SARIMA.
-
 - **Final Model Selection:**  
-  Two SARIMA models were built:  
+ Based on the results of the exploratory data analysis (EDA) and the insights gained from applying the Auto ARIMA function, two SARIMA models were developed to capture different forecasting scenarios:
+ 
 
   **Model 1 – Conservative:**  
   - Prioritizes steady trends in the data  
@@ -60,4 +58,5 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 - Incorporate additional features such as **weather, holidays, and economic indicators** to improve forecasts  
 - Explore **multivariate time series models** for region-specific energy predictions  
 - Deploy the Streamlit dashboard online for interactive, real-time energy sales forecasting  
+
 
