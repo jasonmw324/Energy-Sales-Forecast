@@ -17,7 +17,7 @@ Both models capture seasonal patterns effectively, with residual analysis confir
 
 > 📊 **View the full analysis:** [Python notebook](Energy_Sales_Forecast.ipynb)
 
-📊 **View interactive dashboard:** [Streamlit App](https://energy-sales-forecast.streamlit.app/)
+> 📊 **View interactive dashboard:** [Streamlit App](https://energy-sales-forecast.streamlit.app/)
 
 
 ---
@@ -97,6 +97,7 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 **For Risk Management:**
 - The divergence between models quantifies uncertainty in planning assumptions
 - Monitor actual sales quarterly against both forecasts
+
 
 
 
