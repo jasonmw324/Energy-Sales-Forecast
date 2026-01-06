@@ -85,7 +85,7 @@ def fit_models(data):
     
     model_2 = SARIMAX(
         sales_scaled_2,
-        order=(1,1,1),
+        order=(1,1,0),
         seasonal_order=(2,1,0,12),
         enforce_stationarity=False,
         enforce_invertibility=False
