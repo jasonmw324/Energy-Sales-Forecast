@@ -65,26 +65,21 @@ Based on the results of the exploratory data analysis (EDA) and the insights gai
   - Produces higher forecasts, capturing potential growth opportunities  
 
 **Validation:**  
+
 Residual analysis and forecast accuracy metrics (MAE, RMSE, MAPE) were used to ensure reliability.  
+
 ---
 
 ## Recommendations
 
-**Short-Term Operational Planning**
+- **Short-Term Operational Planning**: For near-term decisions such as generation scheduling, fuel procurement, and load balancing, the growth model is recommended. Its sensitivity to recent trends makes it better suited for responding to emerging demand shifts, seasonal changes, or recent market dynamics. Using this model can help reduce the risk of underestimating demand, which may lead to costly shortages or reliance on spot-market energy purchases.
 
-For near-term decisions such as generation scheduling, fuel procurement, and load balancing, the growth model is recommended. Its sensitivity to recent trends makes it better suited for responding to emerging demand shifts, seasonal changes, or recent market dynamics. Using this model can help reduce the risk of underestimating demand, which may lead to costly shortages or reliance on spot-market energy purchases.
+- **Long-Term Strategic Planning**: For medium- to long-term planning, including infrastructure investment, capacity expansion, and budgeting, the conservative model is more appropriate. Its reliance on historically stable patterns reduces the likelihood of overreacting to temporary spikes or anomalies in demand. This approach supports more stable capital allocation decisions and helps mitigate the risk of overinvestment based on short-lived growth.
 
-**Long-Term Strategic Planning**
+- **Risk Management and Scenario Planning**: Decision-makers should consider using both models jointly to define a realistic planning range. The conservative model can serve as a lower bound and the growth model can serve as an upper boundThe conservative Planning within this range allows for better risk management by preparing for higher-demand outcomes without fully committing resources based on optimistic assumptions alone.
 
-For medium- to long-term planning, including infrastructure investment, capacity expansion, and budgeting, the conservative model is more appropriate. Its reliance on historically stable patterns reduces the likelihood of overreacting to temporary spikes or anomalies in demand. This approach supports more stable capital allocation decisions and helps mitigate the risk of overinvestment based on short-lived growth.
+- **Ongoing Monitoring**: Regularly updating and evaluating forecast performance is recommended, particularly as new data become available. If sustained growth continues to be observed, greater reliance on the growth model may be warranted over time. Conversely, if demand stabilizes or declines, the conservative model should be prioritized.
 
-**Risk Management and Scenario Planning**
-
-Decision-makers should consider using both models jointly to define a realistic planning range. The conservative model can serve as a lower bound and the growth model can serve as an upper boundThe conservative Planning within this range allows for better risk management by preparing for higher-demand outcomes without fully committing resources based on optimistic assumptions alone.
-
-**Ongoing Monitoring**
-
-Regularly updating and evaluating forecast performance is recommended, particularly as new data become available. If sustained growth continues to be observed, greater reliance on the growth model may be warranted over time. Conversely, if demand stabilizes or declines, the conservative model should be prioritized.
 
 
 
