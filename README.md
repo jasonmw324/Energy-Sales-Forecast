@@ -2,18 +2,14 @@
 
 ## Executive Summary
 
-Energy sales remained relatively stable from 2010-2019, fluctuating around a modest upward trend. However, starting in early 2020, sales began increasing significantly, creating uncertainty about whether this represents a permanent shift or temporary spike.
-
-[**Visual placeholder**: Line chart showing historical energy sales 2010-2024, with annotation highlighting the 2020 inflection point]
-
-To address this uncertainty, two forecasting scenarios were developed:
+Energy sales remained relatively stable from 2010-2019, fluctuating around a modest upward trend. However, starting in early 2020, sales began increasing significantly, creating uncertainty about whether this represents a permanent shift or temporary spike. To address this uncertainty, two forecasting scenarios were developed:
 
 - **Growth Model**: Assumes the recent upward trend continues, helping plan for higher demand scenarios (95.4% accuracy)
 - **Conservative Model**: Assumes reversion to the historical stable pattern, supporting cautious resource planning (97.2% accuracy)
 
 Both models capture seasonal patterns effectively, with residual analysis confirming well-fitted forecasts. This dual-scenario approach enables decision-makers to evaluate risk and plan for multiple possible futures.
 
-*Accuracy calculated as 100 - MAPE, meaning forecasts are within 2.5% of actual values on average.
+*Accuracy calculated as 100 - MAPE, meaning forecasts of the growth and conservative models are within 4.6% and 2.8% of actual values on average respectively.
 
 > 📊 **View the full analysis:** [Python notebook](Energy_Sales_Forecast.ipynb)
 
@@ -97,6 +93,7 @@ A **Streamlit dashboard** was developed to interactively explore historical ener
 **For Risk Management:**
 - The divergence between models quantifies uncertainty in planning assumptions
 - Monitor actual sales quarterly against both forecasts
+
 
 
 
